@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up - Cinema Pulse</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/movie.css') }}">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-black text-white min-h-screen flex items-center justify-center p-6">
+
+    <div class="bg-zinc-900 max-w-md w-full p-10 rounded-[2.5rem] border border-white/10 shadow-2xl animate-fade-in">
+
+        <!-- Heading -->
+        <div class="text-center mb-10">
+            <h2 class="text-4xl font-black font-serif mb-2">
+                Join Cinema Pulse
+            </h2>
+            <p class="text-gray-500">
+                Create your account to get started
+            </p>
+        </div>
+
+        <!-- Error Message -->
+        {% if error %}
+        <div class="mb-6 text-center text-rose-600 font-bold">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <!-- Success Message -->
+        {% if success %}
+        <div class="mb-6 text-center text-green-600 font-bold">
+            {{ success }}
+        </div>
+        {% endif %}
+
+        <!-- Signup Form -->
+        <form method="POST" class="space-y-6">
+
+            <input
+                type="text"
+                name="username"
+                required
+                placeholder="Username"
+                class="w-full bg-black border border-white/10 rounded-xl px-5 py-4 focus:border-rose-600 outline-none"
+            >
+
+            <input
+                type="email"
+                name="email"
+                required
+                placeholder="Email Address"
+                class="w-full bg-black border border-white/10 rounded-xl px-5 py-4 focus:border-rose-600 outline-none"
+            >
+
+            <input
+                type="password"
+                name="password"
+                required
+                placeholder="Security Key"
+                class="w-full bg-black border border-white/10 rounded-xl px-5 py-4 focus:border-rose-600 outline-none"
+            >
+
+            <input
+                type="password"
+                name="confirm_password"
+                required
+                placeholder="Confirm Security Key"
+                class="w-full bg-black border border-white/10 rounded-xl px-5 py-4 focus:border-rose-600 outline-none"
+            >
+
+            <button
+                type="submit"
+                class="w-full btn-primary py-4 rounded-xl font-bold text-lg tracking-widest"
+            >
+                CREATE ACCOUNT
+            </button>
+
+        </form>
+
+        <!-- Login Link -->
+        <div class="text-center mt-8">
+            <p class="text-gray-500">
+                Already have an account? 
+                <a href="{{ url_for('login') }}" class="text-rose-600 font-bold hover:text-rose-500">Sign in</a>
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>

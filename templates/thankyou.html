@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thank You - Cinema Pulse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/movie.css') }}">
+</head>
+<body class="bg-black text-white min-h-screen flex flex-col">
+    
+    <!-- Header -->
+    <div class="flex justify-between items-center p-6 max-w-7xl mx-auto w-full">
+        <a href="{{ url_for('index') }}" class="text-2xl font-black">CINEMA<span class="text-rose-600">PULSE</span></a>
+        <div class="flex items-center space-x-6">
+            {% if session.get('username') %}
+                <span class="text-rose-600 font-bold">{{ session.get('username') }}</span>
+                <a href="{{ url_for('logout') }}" class="bg-rose-600 hover:bg-rose-700 px-6 py-2 rounded-lg font-bold text-sm transition-colors">Logout</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="flex-1 flex flex-col items-center justify-center text-center p-6">
+        <div class="bg-emerald-600/10 p-12 rounded-[3rem] border border-emerald-600/20 max-w-md">
+            <div class="text-6xl mb-6">🎬</div>
+            <h1 class="text-4xl font-black mb-4">Rating Received</h1>
+            <p class="text-gray-400 mb-10">Your cinematic pulse has been successfully synced with our global database cluster.</p>
+            <a href="{{ url_for('movie_list') }}" class="btn-primary px-8 py-3 rounded-full font-bold inline-block">Back to Movies</a>
+        </div>
+    </div>
+</body>
+</html>

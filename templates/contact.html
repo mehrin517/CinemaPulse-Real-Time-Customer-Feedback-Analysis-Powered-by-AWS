@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact - Cinema Pulse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/movie.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-black text-white">
+    <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto">
+        <a href="{{ url_for('index') }}" class="text-2xl font-black">CINEMA<span class="text-rose-600">PULSE</span></a>
+        <div class="space-x-8 text-sm uppercase tracking-widest font-bold flex items-center">
+            <a href="{{ url_for('movie_list') }}" class="hover:text-rose-600">Movies</a>
+            <a href="{{ url_for('about') }}" class="hover:text-rose-600">About</a>
+            <a href="{{ url_for('contact') }}" class="text-rose-600">Contact</a>
+            {% if session.get('username') %}
+                <span class="text-rose-600">{{ session.get('username') }}</span>
+                <a href="{{ url_for('logout') }}" class="bg-rose-600 px-6 py-2 rounded-full hover:bg-rose-700">Logout</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="max-w-2xl mx-auto py-24 px-4">
+        <div class="bg-zinc-900 p-12 rounded-[3rem] border border-white/10 shadow-2xl">
+            <h2 class="text-4xl font-black mb-2 font-serif text-center">Get in Touch</h2>
+            <p class="text-gray-500 mb-10 text-center">Questions about your account or database sync?</p>
+            
+            <form class="space-y-6">
+                <input type="text" placeholder="Your Name" class="w-full bg-black border border-white/10 rounded-xl px-5 py-4 focus:border-rose-600 outline-none">
+                <input type="email" placeholder="Email Address" class="w-full bg-black border border-white/10 rounded-xl px-5 py-4 focus:border-rose-600 outline-none">
+                <textarea placeholder="Your Message" rows="5" class="w-full bg-black border border-white/10 rounded-xl px-5 py-4 focus:border-rose-600 outline-none resize-none"></textarea>
+                <button type="button" onclick="alert('Message Sent!')" class="w-full btn-primary py-4 rounded-xl font-bold text-lg">Send Pulse Message</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

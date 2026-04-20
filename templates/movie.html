@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movies - Cinema Pulse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/movie.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-black text-white min-h-screen px-10 py-16">
+
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-12 max-w-7xl mx-auto">
+        <a href="{{ url_for('index') }}" class="text-2xl font-black">CINEMA<span class="text-rose-600">PULSE</span></a>
+        <div class="flex items-center space-x-6">
+            {% if session.get('username') %}
+                <span class="text-rose-600 font-bold">{{ session.get('username') }}</span>
+                <a href="{{ url_for('logout') }}" class="bg-rose-600 hover:bg-rose-700 px-6 py-2 rounded-lg font-bold text-sm transition-colors">Logout</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <h1 class="text-6xl font-black mb-14 font-serif text-center animate-fade-in">
+        Movies
+    </h1>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-12 max-w-7xl mx-auto">
+        {% for movie in movies %}
+        <div class="movie-card bg-zinc-900 rounded-[2.5rem] border border-white/10 p-6 hover:border-rose-600/50 transition-all duration-300 animate-fade-in group cursor-pointer">
+
+            <!-- Movie Info -->
+            <h2 class="text-2xl font-black mb-2">
+                {{ movie.movie_name }}
+            </h2>
+            <p class="text-gray-400 text-sm mb-6">
+                {{ movie.release_year }}
+            </p>
+
+            <!-- Buttons -->
+            <div class="space-y-3">
+                {% if movie.trailer_url %}
+                <a href="{{ movie.trailer_url }}" target="_blank" rel="noopener noreferrer" class="block w-full btn-primary px-6 py-3 rounded-xl font-bold text-center text-sm hover:opacity-90 transition-opacity">
+                    ▶ WATCH TRAILER
+                </a>
+                {% endif %}
+                
+                <a href="{{ url_for('feedback', movie_id=movie.movie_id) }}" class="block w-full bg-zinc-800 hover:bg-zinc-700 px-6 py-3 rounded-xl font-bold text-center text-sm transition-colors">
+                    ⭐ RATE MOVIE
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

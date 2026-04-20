@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About - Cinema Pulse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/movie.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-black text-white">
+    <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto">
+        <a href="{{ url_for('index') }}" class="text-2xl font-black">CINEMA<span class="text-rose-600">PULSE</span></a>
+        <div class="space-x-8 text-sm uppercase tracking-widest font-bold flex items-center">
+            <a href="{{ url_for('movie_list') }}" class="hover:text-rose-600">Movies</a>
+            <a href="{{ url_for('about') }}" class="text-rose-600">About</a>
+            <a href="{{ url_for('contact') }}" class="hover:text-rose-600">Contact</a>
+            {% if session.get('username') %}
+                <span class="text-rose-600">{{ session.get('username') }}</span>
+                <a href="{{ url_for('logout') }}" class="bg-rose-600 px-6 py-2 rounded-full hover:bg-rose-700">Logout</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="max-w-4xl mx-auto py-24 px-4 text-center md:text-left">
+        <h1 class="text-6xl font-black mb-12 font-serif">Our Story</h1>
+        <div class="space-y-12">
+            <div class="bg-zinc-900/50 p-10 rounded-[3rem] border border-white/5">
+                <h2 class="text-3xl font-bold mb-4 text-rose-600">The Cinematic Pulse</h2>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                    Cinema Pulse isn't just a rating site; it's a emotional archive. We believe every movie leaves a unique footprint on your heart. Our mission is to categorize those heartbeats so you always find exactly what you need to feel.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="p-8 bg-zinc-900 rounded-[2rem] border border-white/5">
+                    <h3 class="text-xl font-bold mb-2">Community Driven</h3>
+                    <p class="text-gray-500">Built by cinephiles, for cinephiles. No critics, just real emotions.</p>
+                </div>
+                <div class="p-8 bg-zinc-900 rounded-[2rem] border border-white/5">
+                    <h3 class="text-xl font-bold mb-2">Data Integrity</h3>
+                    <p class="text-gray-500">Secured via AWS cloud infrastructure to ensure your ratings last a lifetime.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

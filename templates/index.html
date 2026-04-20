@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinema Pulse - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/movie.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-black text-white">
+    <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto">
+        <div class="text-2xl font-black tracking-tighter">CINEMA<span class="text-rose-600">PULSE</span></div>
+        <div class="space-x-8 text-sm uppercase tracking-widest font-bold flex items-center">
+            <a href="{{ url_for('movie_list') }}" class="hover:text-rose-600">Movies</a>
+            <a href="{{ url_for('about') }}" class="hover:text-rose-600">About</a>
+            <a href="{{ url_for('contact') }}" class="hover:text-rose-600">Contact</a>
+            
+            {% if session.get('username') %}
+                <span class="text-rose-600">{{ session.get('username') }}</span>
+                <a href="{{ url_for('logout') }}" class="bg-rose-600 px-6 py-2 rounded-full hover:bg-rose-700">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="bg-rose-600 px-6 py-2 rounded-full hover:bg-rose-700">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main class="h-[80vh] flex flex-col items-center justify-center text-center px-4">
+        <h1 class="text-7xl md:text-9xl font-black mb-6 font-serif leading-tight animate-fade-in">
+            Feel the Movie.<br>
+            <span class="text-rose-600">Rate the Experience.</span>
+        </h1>
+        <p class="text-gray-400 text-xl max-w-2xl mb-12 animate-fade-in" style="animation-delay: 0.2s">
+            The premium platform for true cinephiles. Connect your emotions to the silver screen and share your pulse with the world.
+        </p>
+        <a href="{{ url_for('movie_list') }}" class="btn-primary px-12 py-5 rounded-full text-xl font-black uppercase tracking-widest animate-fade-in" style="animation-delay: 0.4s">
+            Get Started
+        </a>
+    </main>
+</body>
+</html>

@@ -1,0 +1,73 @@
+
+:root {
+    --bg-black: #0a0a0a;
+    --zinc-900: #18181b;
+    --rose-600: #e11d48;
+    --rose-700: #be123c;
+}
+
+body {
+    background-color: var(--bg-black);
+    color: white;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.font-serif {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Movie Card Styles */
+.movie-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: var(--zinc-900);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+    border-color: var(--rose-600);
+    box-shadow: 0 20px 25px -5px rgba(225, 29, 72, 0.1), 0 10px 10px -5px rgba(225, 29, 72, 0.04);
+}
+
+/* Modal Styling */
+.modal-overlay {
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(8px);
+}
+
+.btn-primary {
+    background-color: var(--rose-600);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--rose-700);
+    transform: translateY(-2px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #111;
+}
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--rose-600);
+}
